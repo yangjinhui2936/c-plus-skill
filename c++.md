@@ -998,12 +998,12 @@ mutable¹Ø¼ü×ÖÊ¹ÓÃµÄ±»ĞŞÊÎµÄ³ÉÔ±¶ÔÏóÎŞÊÓ¡°³£¶ÔÏóµÄ³ÉÔ±¶ÔÏó±»ÊÓÎª³£¶ÔÏó¡±ÕâÒ»ÓïÑÔÔ
 ## __attribute__ ((visibility("default")))
 ```c++
 
-#include <stdio.h>?
-extern?"C"?void?fun1()?
-{?
-??printf("in %s\n",__FUNCTION__);?
-}?
-__attribute__ ((visibility("hidden")))?void?fun1();//Èô±àÒë´ËÎÄ¼şÊ±Ê¹ÓÃÁË²ÎÊı-fvisibility=hidden£¬Ôò´ËĞĞ¿ÉÒÔÊ¡ÂÔ
+#include <stdio.h> 
+extern "C" void fun1() 
+{ 
+ printf("in %s\n",__FUNCTION__); 
+} 
+__attribute__ ((visibility("hidden"))) void fun1();//Èô±àÒë´ËÎÄ¼şÊ±Ê¹ÓÃÁË²ÎÊı-fvisibility=hidden£¬Ôò´ËĞĞ¿ÉÒÔÊ¡ÂÔ
 
 ```
 ## Ö¸ÕëÓë×Ö·û´®
@@ -1513,24 +1513,24 @@ using namespace std;
 
 template <class T> //¶¨Òåº¯ÊıÄ£°å
 void outputArray(const T *array,int count) {    //½ÓÊÕÊı×éÊ×µØÖ·×ö²ÎÊı
-????for (int i = 0; i < count; i++)
-????????cout << array[i] << " ";
-????cout << endl;
+    for (int i = 0; i < count; i++)
+        cout << array[i] << " ";
+    cout << endl;
 }
 
 int main() {
-????const int A_COUNT =8,B_COUNT = 8, C_COUNT = 20;
-????int a [A_COUNT] = {1,2,3,4,5,6,7,8};???//¶¨ÒåintÊı×é
-????double b [B_COUNT] = {1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8}; //¶¨ÒådoubleÊı×é
-????char c [C_COUNT] = "Welcome to see you!";???//¶¨ÒåcharÊı×é
-????
-????cout << "a array contains:" << endl;
-????outputArray(a,A_COUNT);????????//µ÷ÓÃº¯ÊıÄ£°å
-????cout << "b a array contains:" << endl;
-????outputArray(b,B_COUNT);
-????cout << "c a array contains:" << endl;
-????outputArray(c,C_COUNT);
-????return 0;
+    const int A_COUNT =8,B_COUNT = 8, C_COUNT = 20;
+    int a [A_COUNT] = {1,2,3,4,5,6,7,8};   //¶¨ÒåintÊı×é
+    double b [B_COUNT] = {1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8}; //¶¨ÒådoubleÊı×é
+    char c [C_COUNT] = "Welcome to see you!";   //¶¨ÒåcharÊı×é
+    
+    cout << "a array contains:" << endl;
+    outputArray(a,A_COUNT);        //µ÷ÓÃº¯ÊıÄ£°å
+    cout << "b a array contains:" << endl;
+    outputArray(b,B_COUNT);
+    cout << "c a array contains:" << endl;
+    outputArray(c,C_COUNT);
+    return 0;
 }
 
 ```
@@ -1719,19 +1719,19 @@ Possible output:
 `The contents of the vector are "Hello", "Hello"`
 ## ·Ö±ğËµÒ»ÏÂ×óÖµ¡¢ÓÒÖµ¡¢×óÖµÒıÓÃ¡¢ÓÒÖµÒıÓÃµÄÇø±ğ
 
-×óÖµÒ»¿ªÊ¼ÔÚ C ÖĞ¶¨ÒåÎª¡°¿ÉÒÔ³öÏÖÔÚ¸³Öµ²Ù×÷×ó±ßµÄÖµ¡±¡£È»¶ø£¬µ± ISO C ¼ÓÈë?const?¹Ø¼ü×Öºó£¬Õâ¸ö¶¨Òå±ã²»ÔÙ³ÉÁ¢¡£
-¿É¸³ÖµµÄ×óÖµ±»³ÆÎª?¿ÉĞŞ¸Ä×óÖµ (modifiable lvalues)?
+×óÖµÒ»¿ªÊ¼ÔÚ C ÖĞ¶¨ÒåÎª¡°¿ÉÒÔ³öÏÖÔÚ¸³Öµ²Ù×÷×ó±ßµÄÖµ¡±¡£È»¶ø£¬µ± ISO C ¼ÓÈë const ¹Ø¼ü×Öºó£¬Õâ¸ö¶¨Òå±ã²»ÔÙ³ÉÁ¢¡£
+¿É¸³ÖµµÄ×óÖµ±»³ÆÎª ¿ÉĞŞ¸Ä×óÖµ (modifiable lvalues) 
 ***×óÖµ¿ÉÒÔ×ª»¯³ÉÓÒÖµµ«ÊÇÓÒÖµ²»ÄÜ×ª»¯Îª×óÖµ¡£***
 
 
-²»¹ı£¬ÓÒÖµ¿ÉÒÔÍ¨¹ıÒ»Ğ©¸üÏÔÊ½µÄ·½·¨²úÉú×óÖµ¡£ÀıÈç£¬Ò»Ôª½âÒıÓÃ²Ù×÷·û?'*'?ĞèÒªÒ»¸öÓÒÖµ²ÎÊı£¬µ«·µ»ØÒ»¸ö×óÖµ½á¹û¡£¿¼ÂÇÕâÑùµÄ´úÂë£º
+²»¹ı£¬ÓÒÖµ¿ÉÒÔÍ¨¹ıÒ»Ğ©¸üÏÔÊ½µÄ·½·¨²úÉú×óÖµ¡£ÀıÈç£¬Ò»Ôª½âÒıÓÃ²Ù×÷·û '*' ĞèÒªÒ»¸öÓÒÖµ²ÎÊı£¬µ«·µ»ØÒ»¸ö×óÖµ½á¹û¡£¿¼ÂÇÕâÑùµÄ´úÂë£º
 ```c++
 int arr[] = {1, 2};
 int* p = &arr[0];
 *(p + 1) = 10;   // ÕıÈ·: p + 1 ÊÇÓÒÖµ£¬µ« *(p + 1) ÊÇ×óÖµ
 ```
 
-Ïà·´µØ£¬Ò»ÔªÈ¡µØÖ·²Ù×÷·û?'&'?ĞèÒªÒ»¸ö×óÖµ²ÎÊı£¬·µ»ØÒ»¸öÓÒÖµ£º
+Ïà·´µØ£¬Ò»ÔªÈ¡µØÖ·²Ù×÷·û'&'ĞèÒªÒ»¸ö×óÖµ²ÎÊı£¬·µ»ØÒ»¸öÓÒÖµ£º
 ```c++
 
 int var = 10;int* bad_addr = &(var + 1); // ´íÎó: Ò»Ôª '&' ²Ù×÷·ûĞèÒª×óÖµ²ÎÊı
